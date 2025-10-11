@@ -19,14 +19,14 @@ def pump_off():
     print("Pump OFF")
 
 def inflate(duration=INFLATE_TIME):
-    print(f"Filling for --- seconds")
+    print(f"Filling for 3 seconds")
     pump_on()
     time.sleep(duration)
     pump_off()
     print("Full.")
 
 def deflate(duration=DEFLATE_TIME):
-    print(f"Emptying for ---- seconds")
+    print(f"Emptying for 3 seconds")
     pump_on()
     time.sleep(duration)
     pump_off()
