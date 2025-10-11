@@ -2,9 +2,9 @@ import RPi.GPIO as GPIO
 import time
 
 # === Configuration ===
-PUMP_PIN = 18         # GPIO pin connected to pump control (via relay or MOSFET)
-INFLATE_TIME = 3      # Seconds to run pump for inflation
-DEFLATE_TIME = 3      # Seconds to run pump for deflation
+PUMP_PIN = 18         # GPIO pin connected to pump control (relay or MOSFET)
+INFLATE_TIME = 3      # Seconds
+DEFLATE_TIME = 3      # Seconds
 
 # === Setup ===
 GPIO.setmode(GPIO.BCM)
