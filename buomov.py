@@ -6,7 +6,7 @@ PUMP_PIN = 18         # GPIO pin connected to pump control (relay or MOSFET)
 INFLATE_TIME = 3      # Seconds
 DEFLATE_TIME = 3      # Seconds
 
-# === Setup ===
+# === Setup ===e
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUMP_PIN, GPIO.OUT)
 
