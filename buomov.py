@@ -3,8 +3,8 @@ import time
 
 # === Configuration ===
 PUMP_PIN = 18         # GPIO pin connected to pump control (relay or MOSFET)
-INFLATE_TIME = 3      # Seconds
-DEFLATE_TIME = 3      # Seconds
+INFLATE_TIME = 8      # Seconds
+DEFLATE_TIME = 8      # Seconds
 
 # === Setup ===e
 GPIO.setmode(GPIO.BCM)
@@ -19,14 +19,14 @@ def pump_off():
     print("Pump OFF")
 
 def inflate(duration=INFLATE_TIME):
-    print(f"Filling for 3 seconds")
+    print(f"Filling for 8 seconds")
     pump_on()
     time.sleep(duration)
     pump_off()
     print("Full.")
 
 def deflate(duration=DEFLATE_TIME):
-    print(f"Emptying for 3 seconds")
+    print(f"Emptying for 8 seconds")
     pump_on()
     time.sleep(duration)
     pump_off()
@@ -40,7 +40,7 @@ def cleanup():
 if __name__ == "__main__":
     try:
         inflate()
-        time.sleep(5)
+        time.sleep(10)
         deflate()
     except KeyboardInterrupt:
         print("Interrupted by user.")
