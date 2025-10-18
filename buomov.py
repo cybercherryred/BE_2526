@@ -1,60 +1,51 @@
 import RPi.GPIO as GPIO
 import time
-import smbus
-import ms5837
-import sys
-import cgi
-import cgitb
-import datetime
-import webbrowser
-import threading
-import collect_data
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_MCP3008
-from gpiozero import MCP3008
 
-#Configuration
-PUMP_PIN = 18         # GPIO pin connected to pump control (relay or MOSFET)
-INFLATE_TIME = 8      # Seconds
-DEFLATE_TIME = 8      # Seconds
-
-#Setup
+# GPIO setup
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(PUMP_PIN, GPIO.OUT)
 
-def pump_on():
-    GPIO.output(PUMP_PIN, GPIO.HIGH)
-    print("Pump ON")
+# Define pump control pins
+PUMP_IN_PIN = 17   # GPIO pin to pump fluid into the chamber
+PUMP_OUT_PIN = 27  # GPIO pin to pump fluid out of the chamber
 
-def pump_off():
-    GPIO.output(PUMP_PIN, GPIO.LOW)
-    print("Pump OFF")
+GPIO.setup(PUMP_IN_PIN, GPIO.OUT)
+GPIO.setup(PUMP_OUT_PIN, GPIO.OUT)
 
-def inflate(duration=INFLATE_TIME):
-    print(f"Filling for 8 seconds")
-    pump_on()
-    time.sleep(duration)
-    pump_off()
-    print("Full.")
+# Duration to run pump for each action (in seconds)
+PUMP_DURATION = 2.0
 
-def deflate(duration=DEFLATE_TIME):
-    print(f"Emptying for 8 seconds")
-    pump_on()
-    time.sleep(duration)
-    pump_off()
-    print("Empty.")
+def pump_in():
+    print("Pumping fluid in...")
+    GPIO.output(PUMP_OUT_PIN, GPIO.LOW)  # Ensure out pump is off
+    GPIO.output(PUMP_IN_PIN, GPIO.HIGH)
+    time.sleep(PUMP_DURATION)
+    GPIO.output(PUMP_IN_PIN, GPIO.LOW)
 
-def cleanup():
+def pump_out():
+    print("Pumping fluid out...")
+    GPIO.output(PUMP_IN_PIN, GPIO.LOW)  # Ensure in pump is off
+    GPIO.output(PUMP_OUT_PIN, GPIO.HIGH)
+    time.sleep(PUMP_DURATION)
+    GPIO.output(PUMP_OUT_PIN, GPIO.LOW)
+
+def buoyancy_control(depth_target):
+    # Placeholder logic for depth control
+    current_depth = 0  # Replace with actual sensor reading
+    if depth_target > current_depth:
+        pump_in()
+    elif depth_target < current_depth:
+        pump_out()
+    else:
+        print("Depth is stable.")
+
+try:
+    while True:
+        # Example loop: alternate pumping in and out
+        buoyancy_control(depth_target=1)
+        time.sleep(5)
+        buoyancy_control(depth_target=-1)
+        time.sleep(5)
+
+except KeyboardInterrupt:
+    print("Exiting...")
     GPIO.cleanup()
-    print("GPIO cleanup done.")
-
-#Main Execution
-if __name__ == "__main__":
-    try:
-        inflate()
-        time.sleep(10)
-        deflate()
-    except KeyboardInterrupt:
-        print("Interrupted by user.")
-    finally:
-        cleanup()
