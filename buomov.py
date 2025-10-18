@@ -1,12 +1,24 @@
 import RPi.GPIO as GPIO
 import time
+import smbus
+import ms5837
+import sys
+import cgi
+import cgitb
+import datetime
+import webbrowser
+import threading
+import collect_data
+import Adafruit_GPIO.SPI as SPI
+import Adafruit_MCP3008
+from gpiozero import MCP3008
 
-# === Configuration ===
+#Configuration
 PUMP_PIN = 18         # GPIO pin connected to pump control (relay or MOSFET)
 INFLATE_TIME = 8      # Seconds
 DEFLATE_TIME = 8      # Seconds
 
-# === Setup ===e
+#Setup
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUMP_PIN, GPIO.OUT)
 
@@ -36,7 +48,7 @@ def cleanup():
     GPIO.cleanup()
     print("GPIO cleanup done.")
 
-# === Main Execution ===
+#Main Execution
 if __name__ == "__main__":
     try:
         inflate()
