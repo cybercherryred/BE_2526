@@ -62,6 +62,9 @@ time.sleep(1)
 file2 = open("Depth.txt", "w")
 #k = open("collect_data.txt", "w")
 
+pwm = GPIO.PWM(EN, 1000)
+pwm.start(0)
+
 # def handle_signal(signum, frame):
 #     Set_Servo(SERVO_CHANNEL, SERVO_OFF)
 #     file2.close()
