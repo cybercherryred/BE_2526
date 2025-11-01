@@ -1,3 +1,4 @@
+# I have commented out stuff that has to do with syringe stuff and that's where I need to change to make it a pump
 #collec!/usr/bin/python
 import sys
 import signal
