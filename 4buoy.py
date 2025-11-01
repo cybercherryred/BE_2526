@@ -18,6 +18,13 @@ IN1 = 17
 IN2 = 18
 EN = 28
 TOP_SWITCH = 22
+
+SEC_PER_UNIT = 0.5
+
+#position tracking
+position = 0
+
+
 # TOP_SWITCH = 21
 # ROTATE_SWITCH = 6
 # SERVO_OFF = 150
@@ -38,8 +45,11 @@ i = 0 #was -0.00015
 d = 0
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(IN1, GPIO.OUT)
+GPIO.setup(IN2, GPIO.OUT)
+GPIO.setup(EN, GPIO.OUT)
 #GPIO.setup(12, GPIO.OUT)
-GPIO.setup(ROTATE_SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(ROTATE_SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(TOP_SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #p = GPIO.PWM(12, 50) # channel 12, 50Hz
 #p.start(SERVO_OFF) #motor_off
