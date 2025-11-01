@@ -14,6 +14,10 @@ import os
 global target_position
 global position
 
+IN1 = 17
+IN2 = 18
+EN = 28
+TOP_SWITCH = 22
 # TOP_SWITCH = 21
 # ROTATE_SWITCH = 6
 # SERVO_OFF = 150
