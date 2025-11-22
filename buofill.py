@@ -80,6 +80,10 @@ if __name__ == "__main__":
         print("Holding at 2.5 meters for 30 seconds...")
         time.sleep(30)
 
+        print("\nAscending to 0.05 meters (just below surface)...")
+        go_to_depth(0.05)
+        print("Holding at surface depth. Mission complete.")
+
         print("\nMission complete. Stopping pump.")
         pump_stop()
         GPIO.cleanup()
