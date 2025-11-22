@@ -31,7 +31,7 @@ position = 0
 # SERVO_UP = 200
 # SERVO_DOWN = 100
 
-# SYRINGE_NEUTRAL = 14	 #was 25 #was 16
+# SYRINGE_NEUTRAL = 14	 #was 25 #was 16	
 # SYRINGE_MAX = 37 #was 44 #was 30
 
 # SEC_PER_CLICK = 2.384615
