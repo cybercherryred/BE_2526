@@ -239,14 +239,14 @@ def Go_To_Depth(target_depth):
 		print("sd - current depth: ", start_depth)
 		print("sd - start depth: ", depth)
 		print("sd - start depth: ", start_depth, file=file2)
-		print("sd - current depth: ", depth, file=file2)
-		if TOP_SWITCH == 0:
-			# syr_position = 0
-			print("Cannot move past 0")
-		if count_start > 5:
-			# SYRINGE_NEUTRAL = SYRINGE_NEUTRAL - 0.25
-			count_start = 0
-		time.sleep(2)
+		# print("sd - current depth: ", depth, file=file2)
+		# if TOP_SWITCH == 0:
+		# 	# syr_position = 0
+		# 	print("Cannot move past 0")
+		# if count_start > 5:
+		# 	# SYRINGE_NEUTRAL = SYRINGE_NEUTRAL - 0.25
+		# 	count_start = 0
+		# time.sleep(2)
 
 	stable_count = 0
 
