@@ -20,6 +20,7 @@ OSR_8192 = 5
 # kg/m^3 convenience
 DENSITY_FRESHWATER = 997
 DENSITY_SALTWATER = 1029
+DENSITY_EGADS = 1021.925
 
 # Conversion factors (from native unit, mbar)
 UNITS_Pa     = 100.0
@@ -57,7 +58,7 @@ class MS5837(object):
             print("Available busses are listed as /dev/i2c*")
             self._bus = None
         
-        self._fluidDensity = DENSITY_FRESHWATER
+        self._fluidDensity = DENSITY_EGADS
         self._pressure = 0
         self._temperature = 0
         self._D1 = 0
