@@ -22,5 +22,5 @@ try:
         time.sleep(5)  # Wait for 5 seconds
 
 except KeyboardInterrupt:
-    # If the user presses Ctrl+C, clean up the GPIO configuration
+    #press Ctrl+C, clean up the GPIO configuration
     GPIO.cleanup()
