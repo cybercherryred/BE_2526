@@ -1,13 +1,13 @@
 import time
 import board
 import digitalio
-import adafruit_mprls  # Example pressure sensor library; replace with yours
+import simple_pid import PID
 import busio
 import csv
 
 # --- Setup I2C for pressure sensor ---
 i2c = busio.I2C(board.SCL, board.SDA)
-sensor = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)  # adjust for your sensor
+sensor = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)  #need to adjust
 
 # --- Setup H-bridge pins ---
 in1 = digitalio.DigitalInOut(board.D17)
