@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 #  Configure serial port 
-# Adjust to match your system (e.g., "COM3" on Windows, "/dev/ttyUSB0" on Linux)
+# Need to adjust to match the system
 ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600, timeout=1)
 
 #  Data storage 
