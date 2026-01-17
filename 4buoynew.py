@@ -137,10 +137,10 @@ def mission():
         log_writer = csv.DictWriter(logfile, fieldnames=fieldnames)
         log_writer.writeheader()
 
-        # Descend to 2.5m and hold 30s
+        # go down to 2.5m and hold 30s
         go_to_depth(2.5, pid, hold_time=30, log_writer=log_writer)
 
-        # Ascend to 0.4m and hold 30s
+        # go up to 0.4m and hold 30s
         go_to_depth(0.4, pid, hold_time=30, log_writer=log_writer)
 
     print("Mission complete. Log saved to mission_log.csv.")
