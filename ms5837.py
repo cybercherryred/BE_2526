@@ -32,7 +32,7 @@ UNITS_atm    = 0.000986923
 UNITS_Torr   = 0.750062
 UNITS_psi    = 0.014503773773022
 
-# Valid units
+# valid units
 UNITS_Centigrade = 1
 UNITS_Farenheit  = 2
 UNITS_Kelvin     = 3
@@ -71,12 +71,12 @@ class MS5837(object):
         
         self._bus.write_byte(self._MS5837_ADDR, self._MS5837_RESET)
         
-        # Wait for reset to complete
+        #wait for reset to complete
         sleep(0.01)
         
         self._C = []
         
-        # Read calibration values and CRC
+        # read calibration values and CRC
         for i in range(7):
             print("in range")
             c = self._bus.read_word_data(self._MS5837_ADDR, self._MS5837_PROM_READ + 2*i)
@@ -113,7 +113,7 @@ class MS5837(object):
         # Request D2 conversion (temperature)
         self._bus.write_byte(self._MS5837_ADDR, self._MS5837_CONVERT_D2_256 + 2*oversampling)
     
-        # As above
+        
         sleep(2.5e-6 * 2**(8+oversampling))
  
         d = self._bus.read_i2c_block_data(self._MS5837_ADDR, self._MS5837_ADC_READ, 3)
@@ -134,7 +134,7 @@ class MS5837(object):
         return self._pressure * conversion
         
     # Temperature in requested units
-    # default degrees C
+    # default degrees Celsius
     def temperature(self, conversion=UNITS_Centigrade):
         degC = self._temperature / 100.0
         if conversion == UNITS_Farenheit:

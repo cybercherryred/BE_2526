@@ -6,18 +6,18 @@ import busio
 import csv
 import serial  # PySerial for UART/USB output
 
-# --- Setup I2C for pressure sensor ---
+#  Setup I2C for pressure sensor 
 i2c = busio.I2C(board.SCL, board.SDA)
 sensor = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)  # adjust for your sensor
 
-# --- Setup H-bridge pins for pump ---
+#  Setup H-bridge pins for pump 
 in1 = digitalio.DigitalInOut(board.D17)
 in1.direction = digitalio.Direction.OUTPUT
 
 in2 = digitalio.DigitalInOut(board.D27)
 in2.direction = digitalio.Direction.OUTPUT
 
-# --- Setup Serial (adjust port to your system, e.g. '/dev/ttyUSB0' or 'COM3') ---
+#  Setup Serial (adjust port to your system, e.g. '/dev/ttyUSB0' or 'COM3') 
 ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600, timeout=1)
 
 def pump_fill():
@@ -108,7 +108,7 @@ def go_to_depth(target_depth, hold_time=0, min_depth=0.1, tolerance=0.05, timeou
         pump_stop()
         time.sleep(hold_time)
 
-# --- Mission sequence ---
+#  Mission sequence 
 def mission():
     print("Starting mission...")
 

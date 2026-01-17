@@ -19,7 +19,7 @@ with open("mission_log.csv", newline="") as logfile:
 t0 = times[0]
 times = [t - t0 for t in times]
 
-# --- Plot 1: Depth vs. Time ---
+#  1: Depth vs. Time 
 plt.figure(figsize=(10, 6))
 plt.plot(times, current_depths, label="Current Depth", color="blue")
 plt.plot(times, target_depths, label="Target Depth", color="red", linestyle="--")
@@ -30,7 +30,7 @@ plt.legend()
 plt.grid(True)
 plt.savefig("depth_vs_time.png")
 
-# --- Plot 2: Error vs. Time ---
+#  2: Error vs. Time 
 plt.figure(figsize=(10, 6))
 plt.plot(times, errors, label="Error", color="green")
 plt.xlabel("Time (s)")

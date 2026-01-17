@@ -15,10 +15,10 @@ def load_log(filename):
     times = [t - t0 for t in times]
     return times, target_depths, current_depths, errors
 
-# --- List of logs to compare ---
+#  List of logs to compare 
 log_files = ["mission_log.csv", "mission_log_run2.csv", "mission_log_run3.csv"]
 
-# --- Plot Depth vs. Time ---
+#  Plot Depth vs. Time 
 plt.figure(figsize=(10, 6))
 for fname in log_files:
     times, targets, currents, _ = load_log(fname)
@@ -32,7 +32,7 @@ plt.legend()
 plt.grid(True)
 plt.savefig("depth_vs_time_multi.png")
 
-# --- Plot Error vs. Time ---
+#  Plot Error vs. Time 
 plt.figure(figsize=(10, 6))
 for fname in log_files:
     times, _, _, errors = load_log(fname)

@@ -2,16 +2,16 @@ import serial
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-# --- Configure serial port ---
+#  Configure serial port 
 # Adjust to match your system (e.g., "COM3" on Windows, "/dev/ttyUSB0" on Linux)
 ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600, timeout=1)
 
-# --- Data storage ---
+#  Data storage 
 times = []
 depths = []
 targets = []
 
-# --- Live plot setup ---
+#  Live plot setup 
 fig, ax = plt.subplots()
 line_depth, = ax.plot([], [], label="Current Depth", color="blue")
 line_target, = ax.plot([], [], label="Target Depth", color="red", linestyle="--")
