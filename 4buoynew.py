@@ -5,11 +5,11 @@ import simple_pid import PID
 import busio
 import csv
 
-# --- Setup I2C for pressure sensor ---
+#  Setup I2C for pressure sensor 
 i2c = busio.I2C(board.SCL, board.SDA)
 sensor = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)  #need to adjust
 
-# --- Setup H-bridge pins ---
+#  Setup H-bridge pins 
 in1 = digitalio.DigitalInOut(board.D17)
 in1.direction = digitalio.Direction.OUTPUT
 
@@ -38,7 +38,7 @@ def read_depth():
         print(f"Sensor error: {e}")
         return None
 
-# --- PID Controller ---
+#  PID controller 
 class PIDController:
     def __init__(self, Kp=1.2, Ki=0.1, Kd=0.05, tolerance=0.05, min_depth=0.1):
         self.Kp = Kp
@@ -79,7 +79,7 @@ def go_to_depth(target_depth, pid: PIDController, hold_time=0, log_writer=None, 
 
         output, error = pid.compute(target_depth, depth)
 
-        # Safety: never break surface
+        # Safety: don't break surface
         if depth < pid.min_depth:
             print(f"Abort: Depth {depth:.2f} m < {pid.min_depth} m (surface breach).")
             pump_stop()
@@ -120,13 +120,13 @@ def go_to_depth(target_depth, pid: PIDController, hold_time=0, log_writer=None, 
 
         time.sleep(0.5)
 
-    # Hold at depth
+    # hold at depth
     if hold_time > 0:
         print(f"Holding for {hold_time} seconds...")
         pump_stop()
         time.sleep(hold_time)
 
-# --- Mission sequence ---
+#  Mission sequence 
 def mission():
     print("Starting mission...")
 
